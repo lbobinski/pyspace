@@ -71,7 +71,7 @@ class Node(object):
         return self.handler
 
     """
-        potencial performance issue
+        potential performance issue
         node | [HANDLER, COMMAND, MSG]
     """
     def send_async(self, message):
