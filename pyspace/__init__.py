@@ -12,6 +12,7 @@ class Space(object):
         if node.group != None:
             if node.group not in self.groups:
                 self.groups[node.group] = [node]
+
         node.setSpace(self)
                 
     def removeNode(self, node):

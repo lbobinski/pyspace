@@ -1,8 +1,4 @@
-from pyspace import LocalNode, Space, RemoteNode, Actor
-from pyspace.node import Store
-import pyspace
-import time
-from multiprocessing import Process
+from pyspace import Space, Actor
 import random
 import datetime
 
@@ -29,13 +25,6 @@ if __name__ == '__main__':
     space = Space()
     n = space.connectToLocation("store@127.0.0.1:20000")
 
-    """
-    for i in range(1,10):
-        setter = SetActor("setter", "127.0.0.1", 12346+i)
-        space.spawnNode(setter)
-        setter | ["request","setStore",n1.getLocation(), 10]
-    """
-
     total = 0
     times = 0
     for i in range(1,100):
@@ -58,6 +47,7 @@ if __name__ == '__main__':
         total += (t2-t1).microseconds
         times += 1
     print("Store - Add sync: avg %s total %s" % (total / times, total))
+
     total = 0
     times = 0
     for i in range(1,1000):

@@ -3,7 +3,6 @@ import socket
 import threading
 
 from threading import Thread
-from multiprocessing import Process
 from Queue import Queue, Empty
 from pyspace.server import ThreadedTCPRequestHandler, ThreadedTCPServer
 
@@ -152,12 +151,12 @@ class RemoteNode(Node, Thread):
         
         if len(message) == 2:
             msg = message[1]
+
         if len(message) == 3:
             node = message[2]
             
         transport = [self.getLocation(), 'sender', message, sync]
 
-        #print "(%s) cmd: %s, msg: %s" % (node, cmd, msg)
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((self.host, self.port))
         sock.send(pickle.dumps(transport))
