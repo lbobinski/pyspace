@@ -8,9 +8,11 @@ class SetActor(Actor):
         if msg[1] == "setStore":
             node.store["store"] = msg[2]
             self | ["request","send", msg[3]]
+
         elif msg[1] == "send":
             store = self.space.getNode(node.store["store"])
-            store | ["store", "add", ["key", random.randrange(0,123123)]]
+            store | ["store", "add", ["key", random.randrange(0,100000)]]
+
             if msg[2] > 0:
                 count = msg[2]
                 count -= 1
